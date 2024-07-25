@@ -70,7 +70,7 @@ const Book = sequelize.define('Book', {
 
 
       // List all books with options to edit and delete each book.
-      app.get('/books', async (req, res) => {
+      app.get('/', async (req, res) => {
         const books = await Book.findAll();
         res.render('books', { books });
       });
