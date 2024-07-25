@@ -39,7 +39,7 @@ const Book = sequelize.define('Book', {
       });
 
 //Create the Books table in the database.
-/*sequelize.sync().then(() => {
+sequelize.sync().then(() => {
     Book.create({
         
         title: 'Avatar',
@@ -64,7 +64,7 @@ const Book = sequelize.define('Book', {
     }).then(() => {
       console.log('The book: Airplane and airport theory created!');
     });
-  });*/
+  });
 
 
 
