@@ -76,18 +76,18 @@ const Book = sequelize.define('Book', {
       });
       
       // Display form for creating a new book
-      app.get('/books/new', (req, res) => {
+      app.get('/new', (req, res) => {
         res.render('newBook');
       });
       
       
-      app.post('/books', async (req, res) => {
+      app.post('/', async (req, res) => {
         const { id,title, author, year } = req.body;
         await Book.create({ id,title, author, year });
-        res.redirect('/books');
+        res.redirect('/');
       });
       
-      app.get('/books/edit/:id', async (req, res) => {
+      app.get('/edit/:id', async (req, res) => {
         const bookId = req.params.id;
         const book = await Book.findByPk(bookId);
         if (book) {
@@ -98,7 +98,7 @@ const Book = sequelize.define('Book', {
       });
 
       // Delete a book
-      app.post('/books/delete/:id', async (req, res) => {
+      app.post('/delete/:id', async (req, res) => {
         const bookId = req.params.id;
         await Book.destroy({ where: { id: bookId } });
         res.redirect('/books');
